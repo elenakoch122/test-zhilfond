@@ -1,6 +1,6 @@
 import './App.css';
-import Profile from './components/Profile';
-import Sidebar from './components/Sidebar';
+import Profile from './components/Profile/Profile';
+import Sidebar from './components/Sidebar/Sidebar';
 
 export default function App() {
   document.title = 'Жилфонд';
