@@ -1,5 +1,6 @@
-import UsersList from '../UsersList/UsersList';
 import style from './Sidebar.module.css';
+import UsersList from '../UsersList/UsersList';
+import { Oval } from 'react-loader-spinner';
 
 export default function Sidebar() {
   return (
@@ -11,7 +12,17 @@ export default function Sidebar() {
       <div className={`${style.searchForm__results} text`}>
         {/* {есть результат ? <UsersList /> : 'ничего не найдено'} */}
         {/* начните поиск */}
-        <UsersList />
+        {/* <UsersList /> */}
+        <Oval
+          visible={true}
+          height="50"
+          width="50"
+          color="#E31F24"
+          secondaryColor="#76787D"
+          ariaLabel="oval-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+        />
       </div>
     </form>
   );
