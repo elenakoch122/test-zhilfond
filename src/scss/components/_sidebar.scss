@@ -1,0 +1,30 @@
+.searchForm {
+  width: 355px;
+  padding: 25px 20px 25px;
+  border-right: 1px solid $white;
+
+  &__title {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 15px 25px;
+    margin-bottom: 20px;
+    border: 1.5px solid $white;
+    border-radius: 8px;
+  }
+
+  &__results {
+    height: 80%;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+  }
+
+  &__error {
+    color: red;
+  }
+}

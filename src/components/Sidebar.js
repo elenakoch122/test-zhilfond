@@ -1,8 +1,7 @@
-import style from './Sidebar.module.css';
-import UsersList from '../UsersList/UsersList';
-import { Oval } from 'react-loader-spinner';
 import { useContext, useEffect, useState } from 'react';
-import { UsersContext } from '../../context/context';
+import { UsersContext } from '../context/context';
+import { Oval } from 'react-loader-spinner';
+import UsersList from './UsersList';
 
 export default function Sidebar() {
   const { users, setUsers } = useContext(UsersContext);
@@ -30,10 +29,10 @@ export default function Sidebar() {
   }, [setUsers, users.search]);
 
   return (
-    <form className={style.searchForm}>
-      <label className={style.searchForm__title} htmlFor="search">Поиск сотрудников</label>
+    <form className="searchForm">
+      <label className="searchForm__title" htmlFor="search">Поиск сотрудников</label>
       <input
-        className={style.searchForm__input}
+        className="searchForm__input"
         type="text"
         id="search"
         value={users.search}
@@ -41,8 +40,8 @@ export default function Sidebar() {
         placeholder="Введите Id или имя"
       />
 
-      <h2 className={style.searchForm__title}>Результаты</h2>
-      <div className={`${style.searchForm__results} text`}>
+      <h2 className="searchForm__title">Результаты</h2>
+      <div className="searchForm__results text">
         {users.isLoading ? (
           <Oval
             visible={true}
@@ -56,7 +55,7 @@ export default function Sidebar() {
           />
         ) : (
           isError ? (
-            <p className={style.searchForm__error}>Ошибка! Попробуйте изменить запрос.</p>
+            <p className="searchForm__error">Ошибка! Попробуйте изменить запрос.</p>
           ) : (
             users.list ? <UsersList list={users.list} /> : users.search ? 'ничего не найдено' : 'начните поиск'
           )

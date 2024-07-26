@@ -1,0 +1,57 @@
+.profile {
+  display: flex;
+  flex: 3;
+  padding: 30px 20px;
+
+  &__img {
+    width: 100%;
+    object-fit: cover;
+
+    &__wrapper {
+      flex: 1;
+      margin-right: 60px;
+    }
+  }
+
+  &__content {
+    flex: 1;
+
+    &__name {
+      margin-bottom: 15px;
+      font-size: 16px;
+      font-weight: 600;
+      color: $black;
+    }
+
+    &__info {
+      margin-bottom: 15px;
+      font-size: 14px;
+      font-weight: 400;
+      color: $text-grey;
+
+      &:last-child {
+        margin-top: 30px;
+      }
+
+      & span {
+        font-weight: 600;
+        color: $text-grey-dark;
+      }
+
+      &__about {
+        display: block;
+        margin-bottom: 15px;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.empty {
+  justify-content: center;
+  align-items: center;
+
+  & > div {
+    text-align: center;
+  }
+}

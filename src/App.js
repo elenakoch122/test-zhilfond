@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { UsersContext } from './context/context';
-import './App.css';
-import Profile from './components/Profile/Profile';
-import Sidebar from './components/Sidebar/Sidebar';
+import Profile from './components/Profile';
+import Sidebar from './components/Sidebar';
 
 export default function App() {
   document.title = 'Жилфонд';

@@ -1,8 +1,20 @@
-### Тестовое задание 
-[Ссылка на задание](https://docs.google.com/document/u/0/d/1duogz2g-vh-vvNzAkDRZu8fA1zr15bk6buCUhUVmrqs/mobilebasic)
-### Установка.
-**Node.js** v20.11.0
-
-`npm i`
-
-`npm start`
+## Тестовое задание
+### Краткое описание задачи
+Создать страницу поиска сотрудников, с предпросмотром профиля ([ссылка на задание](https://docs.google.com/document/u/0/d/1duogz2g-vh-vvNzAkDRZu8fA1zr15bk6buCUhUVmrqs/mobilebasic)).
+### Стек технологий
+- React
+- Sass
+### Комментарии
+В проекте используется `Node.js` версия `20.11.0`.
+Для установки проекта склонируйте репозиторий на свой компьютер:
+```
+git clone <url>
+```
+установите зависимости:
+```
+npm install
+```
+и запустите проект:
+```
+npm start
+```
