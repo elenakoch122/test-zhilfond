@@ -1,15 +1,16 @@
 import style from './Sidebar.module.css';
 import UsersList from '../UsersList/UsersList';
 import { Oval } from 'react-loader-spinner';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { UsersContext } from '../../context/context';
 
 export default function Sidebar() {
   const { users, setUsers } = useContext(UsersContext);
+  const [isError, setIsError] = useState(false);
 
   const onInputChange = (e) => {
     const { value } = e.target;
-    setUsers(prev => ({ ...prev, search: value }));    
+    value ? setUsers(prev => ({ ...prev, search: value })) : setUsers(prev => ({ ...prev, search: value, active: null }));    
   };
 
   useEffect(() => {
@@ -17,12 +18,15 @@ export default function Sidebar() {
     const query = users.search.split(',').map(i => (Number.isFinite(+i) ? 'id=' : 'username=') + i.trim()).join('&');
 
     fetch(`https://jsonplaceholder.typicode.com/users?${query}`)
-      .then(response => response.json())
+      .then(response => {
+        if (response.ok) return response.json();
+        throw new Error('Ошибка!');
+      })
       .then(data => {
-        data.length === 0 ? setUsers(prev => ({ ...prev, list: null })) : setUsers(prev => ({ ...prev, list: data }));
-      });
-
-    setUsers(prev => ({ ...prev, isLoading: false }));
+        data?.length === 0 ? setUsers(prev => ({ ...prev, list: null })) : setUsers(prev => ({ ...prev, list: data }));
+      })
+      .catch((e) => setIsError(true))
+      .finally(() => setUsers(prev => ({ ...prev, isLoading: false })));
   }, [setUsers, users.search]);
 
   return (
@@ -51,7 +55,11 @@ export default function Sidebar() {
             wrapperClass=""
           />
         ) : (
-          users.list ? <UsersList list={users.list} /> : users.search ? 'ничего не найдено' : 'начните поиск'
+          isError ? (
+            <p className={style.searchForm__error}>Ошибка! Попробуйте изменить запрос.</p>
+          ) : (
+            users.list ? <UsersList list={users.list} /> : users.search ? 'ничего не найдено' : 'начните поиск'
+          )
         )}
       </div>
     </form>    
