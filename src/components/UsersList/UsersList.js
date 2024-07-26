@@ -1,20 +1,14 @@
-import UsersItem from './UsersItem/UsersItem';
 import style from './UsersList.module.css';
+import UsersItem from './UsersItem/UsersItem';
 
-export default function UsersList() {
+export default function UsersList({ list }) {
   return (
     <ul className={style.list}>
-      <li className={style.item}>
-        <UsersItem />
-      </li>
-
-      <li className={style.item}>
-        <UsersItem />
-      </li>
-
-      <li className={style.item}>
-        <UsersItem />
-      </li>
+      {list.map(u => (
+        <li className={style.item} key={u.id}>
+          <UsersItem user={u} />
+        </li>
+      ))}
     </ul>
   );
 }

@@ -1,18 +1,3 @@
-/* .profile {
-  position: relative;
-  flex: 3;
-}
-
-.profile > div {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-} */
-
-
-
 .profile {
   display: flex;
   flex: 3;
@@ -60,12 +45,13 @@
   margin-top: 30px;
 }
 
-.profile__content__info span, .profile__content__info div {
+.profile__content__info span {
   font-weight: 600;
   color: #333333;
 }
 
-.profile__content__info div {
+.profile__content__info__about {
+  display: block;
   margin-bottom: 15px;
   font-size: 16px;
 }
