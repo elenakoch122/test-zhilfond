@@ -1,21 +1,28 @@
 import style from './UsersItem.module.css';
 import nofoto from '../../../assets/images/no-foto-small.png';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { UsersContext } from '../../../context/context';
 
-export default function UsersItem() {
-  const [classes, setClasses] = useState(style.card);
+export default function UsersItem({ user }) {
+  const initClasses = style.card;
+  const [classes, setClasses] = useState(initClasses);
+
+  const { users, setUsers } = useContext(UsersContext);
+
+  useEffect(() => {
+    users.active?.id === user.id ? setClasses(prev => prev + ' ' + style.card_active) : setClasses(initClasses);
+  }, [initClasses, user.id, users.active?.id]);
 
   const onCardClick = () => {
-    // добавляем класс active
-    // показываем профиль
+    setUsers(prev => ({ ...prev, active: user}));
   };
 
   return (
-    <div className={`${style.card} ${style.card_active}`} onClick={onCardClick}>
+    <div className={classes} onClick={onCardClick}>
       <img className={style.card__avatar} src={nofoto} alt="" />
       <div className={style.card__content}>
-        <p className={style.card__content__name}>Bret</p>
-        <p className={style.card__content__email}>Sincere@april.biz</p>
+        <p className={style.card__content__name}>{user.username}</p>
+        <p className={style.card__content__email}>{user.email}</p>
       </div>
     </div>
   );
